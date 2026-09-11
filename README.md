@@ -1,13 +1,9 @@
 # AR_Shared_Space
 
-https://github.com/user-attachments/assets/5c813f33-a62f-4794-b5e6-d6a82f18c095
-
 # AR Shared Space — ARKit WorldMap 多人共享空間
 
 > 使用 **AR Foundation + ARKit** 開發的多人 AR 共享空間專案。透過掃描實體環境建立 `ARWorldMap`，並以 **TCP Socket** 將地圖檔案傳輸給其他玩家，使雙方裝置能夠重建出同一份空間座標系統，進而在真實世界的同一個位置看到相同的虛擬物件。
-
-![Mapping Status Demo](assets/screenshot-anchors-saved.png)
-
+> 
 ---
 
 ## 專案動機
@@ -75,25 +71,8 @@ https://github.com/user-attachments/assets/5c813f33-a62f-4794-b5e6-d6a82f18c095
 
 ---
 
-## 展示畫面
-
-| 環境掃描與 Mapping 狀態 | 放置 Anchor 並儲存 WorldMap | 另一端載入 WorldMap |
-|---|---|---|
-| ![scanning](assets/screenshot-scanning.png) | ![anchors](assets/screenshot-anchors-saved.png) | ![loading](assets/screenshot-loading.png) |
-
-> 完整操作流程請參考專案內附示範影片。
-
----
-
 ## 開發過程中的挑戰
 
 - **Mapping Status 的即時判讀**：需要清楚呈現 `Limited / Extending / Mapped / NotAvailable` 等狀態給使用者，避免玩家在地圖尚未收斂完成前就嘗試載入，導致重定位失敗。
 - **大檔案的網路傳輸穩定性**：`ARWorldMap` 序列化後動輒 1MB 以上，需要處理 TCP 傳輸的分包、封包完整性驗證與傳輸進度回饋。
 - **重定位失敗的容錯處理**：光線、環境特徵不足或裝置移動過快都可能導致 `Load WorldMap` 後遲遲無法從 `Extending` 進入 `Mapped`，需要設計對應的提示與重試機制。
-
----
-
-## 授權
-
-本專案為個人作品集展示用途。
-
